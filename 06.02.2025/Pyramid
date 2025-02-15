@@ -1,0 +1,10 @@
+#include <iostream>
+int main () {
+    int num = 0;
+    std :: cin >> num;
+    for (int a = 1; a <= num; a++) {
+        std :: cout << std :: string(num - a, ' ');
+        std :: cout << std :: string(2 * a - 1, '*') << std :: endl;
+    }
+    return 0;
+}
