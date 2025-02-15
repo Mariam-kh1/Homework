@@ -1,11 +1,12 @@
 #include <iostream>
 int main() {
     int decimal = 0;
+    std :: cout << "Enter your decimal: ";
     std :: cin >> decimal; 
     int wrongBinary = 0; 
     int count = 0; 
     if (0 == decimal) {
-        std :: cout << "0" << endl;
+        std :: cout << "0" << std :: endl;
         return 0;
     }
     while (0 < decimal) {
@@ -19,6 +20,6 @@ int main() {
         wrongBinary /= 10;
         count--;
     }
-    std :: cout << rightBinary << endl; 
+    std :: cout << "The binary of your number is: " << rightBinary << std :: endl; 
     return 0;
 }
