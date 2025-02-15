@@ -1,0 +1,13 @@
+#include <iostream>
+int main() {
+    int number = 0;
+    int sum = 0;
+    std :: cout << "Enter your number: ";
+    std :: cin >> number;
+    while (0 < number) {
+        sum += number % 10;  
+        number /= 10;
+    }
+    std :: cout << "The sum of nums = " << sum << std :: endl;
+    return 0;
+}
