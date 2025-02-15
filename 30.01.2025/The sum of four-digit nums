@@ -1,0 +1,20 @@
+#include <iostream>
+int main() {
+    int number;
+    std :: cout << "Enter the four-digit number։ ";
+    std :: cin >> number;
+    if (number < 1000 || number > 9999) {
+        std :: cout << "Wrong number" << std :: endl;
+        return 1;
+    }
+    int sum = 0;
+    sum += number % 10; 
+    number /= 10;         
+    sum += number % 10;
+    number /= 10;
+    sum += number % 10;   
+    number /= 10;
+    sum += number; 
+    std :: cout << "The sum of nums = " << sum << std :: endl;
+    return 0;
+}
