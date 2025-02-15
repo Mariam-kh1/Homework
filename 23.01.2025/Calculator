@@ -1,0 +1,23 @@
+#include <iostream>
+int main() {
+    double a = 0;
+    double b = 0;
+    char c = '-';
+    std :: cout << "Enter mathematical expression։ " << std :: endl;
+    std :: cin >> a >> c >> b;
+    switch (c) {
+        case '+':
+            std :: cout << a + b << endl;
+            break;
+        case '-':
+            cout << a - b << endl;
+            break;
+        case '*':
+            cout << a * b << endl;
+            break;
+        case '/':
+            if (0 != b) {
+                cout << a / b << endl;
+            } else {
+                std :: cout << "Error" << std :: endl;
+            break;
