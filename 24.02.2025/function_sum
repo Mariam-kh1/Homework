@@ -1,0 +1,13 @@
+#include <iostream>
+int sum(int num1 = 1, int num2 = 1); 
+int main() {
+    int a, b;
+    std :: cout << "Enter two numbers: " << "\n";
+    std :: cin >> a >> b; 
+    int k = sum(a, b); 
+    std :: cout << "Sum = " << k << "\n"; 
+    return 0;
+}
+int sum(int num1, int num2) { 
+    return num1 + num2;
+}
