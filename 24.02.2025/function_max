@@ -3,7 +3,7 @@ int max(int num1 = 1, int num2 = 1);
 int main() {
     int a, b;
     std :: cout << "Enter two numbers: " << "\n";
-    std :: cin >> a >> b; 
+    std :: cin >> a >> b;
     int k = max(a, b); 
     std :: cout << "Max = " << k << "\n"; 
     return 0;
