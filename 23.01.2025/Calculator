@@ -7,7 +7,7 @@ int main() {
     std :: cin >> a >> c >> b;
     std :: cout << "The result is: ";
     switch (c) {
-        case '+':
+        case '+': 
             std :: cout << a + b << std :: endl;
             break;
         case '-':
