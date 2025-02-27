@@ -1,7 +1,7 @@
 #include <iostream>
 int primeNum(int num = 1); 
 int main() {
-    int n;
+    int n = 1;
     std::cout << "Enter a number: ";
     std::cin >> n;
     if (primeNum(n) == 1) {
