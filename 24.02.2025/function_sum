@@ -1,8 +1,8 @@
 #include <iostream>
 int sum(int num1 = 1, int num2 = 1); 
 int main() {
-    int a;
-    int b;
+    int a = 1;
+    int b = 1;
     std :: cout << "Enter two numbers: " << "\n";
     std :: cin >> a >> b; 
     int k = sum(a, b); 
