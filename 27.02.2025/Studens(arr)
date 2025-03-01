@@ -1,9 +1,0 @@
-#include <iostream>
-int main() {
-    float grades[30]; 
-    std :: cout << "Enter grades for 30 students (0-10)" << "\n";
-    for (int i = 1; i <= 30; i++) {
-        std :: cin >> grades[i];
-    }
-    return 0;
-}

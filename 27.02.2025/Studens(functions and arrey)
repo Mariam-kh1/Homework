@@ -1,0 +1,77 @@
+#include <iostream>
+void inputGrades(int grades[], int size);
+void displayGrades(const int grades[], int size);
+double calculateAverage(const int grades[], int size);
+int findHighestGrade(const int grades[], int size);
+int findLowestGrade(const int grades[], int size);
+void sortGrades(int grades[], int size);
+int main() {
+    const int SIZE = 30; 
+    int grades[SIZE];  
+    inputGrades(grades, SIZE);
+    std :: cout << "\nGrades of the students:\n";
+    displayGrades(grades, SIZE);
+    double average = calculateAverage(grades, SIZE);
+    int highest = findHighestGrade(grades, SIZE);
+    int lowest = findLowestGrade(grades, SIZE);
+    std :: cout << "\nStatistics:";
+    std :: cout << "\nAverage grade: " << average;
+    std :: cout << "\nHighest grade: " << highest;
+    std :: cout << "\nLowest grade: " << lowest;
+    sortGrades(grades, SIZE);
+    std :: cout << "\nSorted grades (highest to lowest):\n";
+    displayGrades(grades, SIZE);
+    return 0;
+}
+void inputGrades(int grades[], int size) {
+    std :: cout << "Enter the grades for " << size << " students (0-10):\n";
+    for (int i = 0; i < size; i++) {
+        std :: cout << "Student " << i + 1 << ": ";
+        std :: cin >> grades[i];
+    }
+}
+
+void displayGrades(const int grades[], int size) {
+    for (int i = 0; i < size; i++) {
+        std :: cout << "Student " << i + 1 << ": " << grades[i] << "\n";
+    }
+}
+
+
+double calculateAverage(const int grades[], int size) {
+    double sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += grades[i];
+    }
+    return sum / size;
+}
+
+int findHighestGrade(const int grades[], int size) {
+    int highest = grades[0];
+    for (int i = 1; i < size; i++) {
+        if (grades[i] > highest) {
+            highest = grades[i];
+        }
+    }
+    return highest;
+}
+int findLowestGrade(const int grades[], int size) {
+    int lowest = grades[0];
+    for (int i = 1; i < size; i++) {
+        if (grades[i] < lowest) {
+            lowest = grades[i];
+        }
+    }
+    return lowest;
+}
+void sortGrades(int grades[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (grades[j] < grades[j + 1]) {
+                int temp = grades[j];
+                grades[j] = grades[j + 1];
+                grades[j + 1] = temp;
+            }
+        }
+    }
+}
