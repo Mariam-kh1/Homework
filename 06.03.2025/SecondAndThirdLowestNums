@@ -1,0 +1,81 @@
+#include <iostream>
+void inputNums(int nums[], int size);
+int secondLowestNum(int nums[], int size);
+int thirdLowestNum(int nums[], int size);
+int main() {
+    std::cout<<"How many numbers do you want to input? -- ";
+    int num = 0;
+    std::cin>>num;
+    const int size = num;
+    int nums[size];
+    std::cout<<"Enter the numbers: ";
+    inputNums(nums, size);
+    std::cout<<"\nThe second lowest number is: ";
+    std::cout << secondLowestNum(nums, size);
+    std::cout<<"\nThe third lowest number is: ";
+    std::cout << thirdLowestNum(nums, size);
+    return 0;
+}
+void inputNums(int nums[], int size){
+    for (int i = 0; i < size; i++) {
+        std::cin>>nums[i];
+    }
+}
+int secondLowestNum(int nums[], int size) {
+    int num1 = nums[0];
+    int num2 = 0;
+    if (num1 > nums[1]) {
+        num1 = nums[1];
+        num2 = nums[0];
+    }
+    else {
+        num2 = nums[1];
+    }
+    for (int i = 2; i < size; i++) {
+        if (nums[i] < num1) {
+            num2 = num1;
+            num1 = nums[i];
+        } else if (nums[i] < num2) {
+            num2 = nums[i];
+        }
+    }
+    return num2;
+}
+int thirdLowestNum(int nums[], int size) {
+    int num1 = nums[0];
+    int num2 = 0;
+    int num3 = 0;
+
+    if (num1 > nums[1]) {
+        num1 = nums[1];
+        num2 = nums[0];
+    }
+    else {
+        num2 = nums[1];
+    }
+
+    if (num2 > nums[2]) {
+        num3 = num2;
+        num2 = nums[2];
+    }
+    else {
+        num3 = nums[2];
+    }
+
+    for (int i = 3; i < size; i++) {
+        if (nums[i] < num1) {
+            num3 = num2;
+            num2 = num1;
+            num1 = nums[i];
+        } 
+        else if (nums[i] < num2) {
+            num3 = num2;
+            num2 = nums[i];
+        } 
+        else if (nums[i] < num3) {
+            num3 = nums[i];
+        }
+    }
+
+    return num3;
+}
