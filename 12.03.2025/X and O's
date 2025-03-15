@@ -1,0 +1,71 @@
+#include <iostream>
+void printBoard(char board[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            std::cout << board[i][j] << " ";
+        }
+        std::cout << "\n";
+    }
+}
+bool Win(char board[3][3], char player) {
+    for (int i = 0; i < 3; i++) {
+        if ((board[i][0] == player && board[i][1] == player && board[i][2] == player) ||
+            (board[0][i] == player && board[1][i] == player && board[2][i] == player)) {
+            return true;
+        }
+    }
+    if ((board[0][0] == player && board[1][1] == player && board[2][2] == player) ||
+        (board[0][2] == player && board[1][1] == player && board[2][0] == player)) {
+        return true;
+    }
+    return false;
+}
+bool Draw(char board[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[i][j] == '.') {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+int main() {
+    char board[3][3] = { {'.', '.', '.'}, {'.', '.', '.'}, {'.', '.', '.'} };
+    int row = 0;
+    int col = 0;
+    char currentPlayer = 'X';
+    std::cout << "This is your board: \n";
+    printBoard(board);
+    std::cout << "\n";
+    while (true) {
+        std::cout << "Player " << currentPlayer << ", choose your place: row and col: ";
+        std::cin >> row >> col;
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            std::cout << "Invalid position. Please choose row and col between 0 and 2.\n";
+            continue;
+        }
+        if (board[row][col] == '.') {
+            board[row][col] = currentPlayer;
+        } else {
+            std::cout << "Try again, this place is already taken\n";
+            continue;
+        }
+        printBoard(board);
+        std::cout << "\n";
+        if (Win(board, currentPlayer)) {
+            std::cout << "Player " << currentPlayer << " won!\n";
+            break;
+        }
+        if (Draw(board)) {
+            std::cout << "No one won!\n";
+            break;
+        }
+        if (currentPlayer == 'X') {
+            currentPlayer = 'O';
+        } else {
+            currentPlayer = 'X';
+        }
+    }
+    return 0;
+}
