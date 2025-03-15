@@ -1,0 +1,28 @@
+#include <iostream>
+bool Palitrom(int num = 0);
+int main() {
+    int number = 0;
+    std::cout << "Enter your number: ";
+    std::cin >> number;
+    if (Palitrom(number)) {
+        std::cout << "Your number is palitrom";
+    } else {
+        std::cout << "Your number isn't palitrom";
+    }
+    return 0;
+ }
+ bool Palitrom(int num) {
+    int number_ = num;
+    int _number = 0;
+    while (0 < num) {
+        int digit = 0;
+        digit = num % 10;
+        _number = _number * 10 + digit;
+        num /= 10;
+    }
+    if (number_ == _number) {
+        return true;
+    } else{
+        return false;
+    }
+ }
