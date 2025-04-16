@@ -1,0 +1,75 @@
+#include <iostream>
+void inputCar(int* years, float* prices, int index) {
+    std::cout << "Enter brand for car ";
+    std::cin >> ;
+
+    std::cout << "Enter model for car " << ;
+    std::cin >>
+
+    std::cout << "Enter year for car " << ;
+    std::cin >> 
+
+    std::cout << "Enter price for car " <<;
+    std::cin >> 
+}
+
+void displayCar(const string* brands, const string* models, const int* years, const float* prices, int index) {
+    
+}
+
+void calculateAveragePrice(const float* prices, int n, float& avgPrice) {
+    float sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += prices[i];
+    }
+    avgPrice = sum / n;
+}
+
+int findMostExpensiveCar(const float* prices, int n) {
+    int index = 0;
+    for (int i = 1; i < n; i++) {
+        if (prices[i] > prices[index]) {
+            index = i;
+        }
+    }
+    return index;
+}
+
+int searchCarByBrand(const string* brands, int n, const string& searchBrand) {
+    for (int i = 0; i < n; i++) {
+        if (brands[i] == searchBrand) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int n;
+    std::cout << "How many cars do you want to enter? ";
+    std::cin >> n;
+    string* brands = new string[n];
+    string* models = new string[n];
+    int* years = new int[n];
+    float* prices = new float[n];
+    for (int i = 0; i < n; i++) {
+        inputCar(brands, models, years, prices, i);
+    for (int i = 0; i < n; i++) {
+        displayCar(brands, models, years, prices, i);
+    }
+    float averagePrice;
+    calculateAveragePrice(prices, n, averagePrice);
+    std::cout << "\nAverage price of all cars: " << averagePrice;
+    int mostExpensiveIndex = findMostExpensiveCar(prices, n);
+    std::cout << "\nMost expensive car:\n";
+    displayCar(brands, models, years, prices, mostExpensiveIndex);
+    string brandSearch;
+    std::cout << "\nEnter brand name to search: ";
+    std::cin >> brandSearh;
+    delete[] brands;
+    delete[] models;
+    delete[] years;
+    delete[] prices;
+
+    return 0;
+}
