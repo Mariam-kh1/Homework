@@ -1,24 +1,30 @@
 #include <iostream>
-void inputCar(int* years, float* prices, int index) {
-    std::cout << "Enter brand for car ";
-    std::cin >> ;
+#include <string>
 
-    std::cout << "Enter model for car " << ;
-    std::cin >>
+void inputCar(std::string* brands, std::string* models, int* years, float* prices, int index) {
+    std::cout << "Enter brand for car " << index + 1 << ": ";
+    std::cin >> brands[index];
 
-    std::cout << "Enter year for car " << ;
-    std::cin >> 
+    std::cout << "Enter model for car " << index + 1 << ": ";
+    std::cin >> models[index];
 
-    std::cout << "Enter price for car " <<;
-    std::cin >> 
+    std::cout << "Enter year for car " << index + 1 << ": ";
+    std::cin >> years[index];
+
+    std::cout << "Enter price for car " << index + 1 << ": ";
+    std::cin >> prices[index];
 }
 
-void displayCar(const string* brands, const string* models, const int* years, const float* prices, int index) {
-    
+void displayCar(const std::string* brands, const std::string* models, const int* years, const float* prices, int index) {
+    std::cout << "Car " << index + 1 << ":\n";
+    std::cout << "Brand: " << brands[index] << "\n";
+    std::cout << "Model: " << models[index] << "\n";
+    std::cout << "Year: " << years[index] << "\n";
+    std::cout << "Price: " << prices[index] << "\n";
 }
 
 void calculateAveragePrice(const float* prices, int n, float& avgPrice) {
-    float sum = 0;
+    float sum = 0.0f;
     for (int i = 0; i < n; i++) {
         sum += prices[i];
     }
@@ -35,7 +41,7 @@ int findMostExpensiveCar(const float* prices, int n) {
     return index;
 }
 
-int searchCarByBrand(const string* brands, int n, const string& searchBrand) {
+int searchCarByBrand(const std::string* brands, int n, const std::string& searchBrand) {
     for (int i = 0; i < n; i++) {
         if (brands[i] == searchBrand) {
             return i;
@@ -48,24 +54,40 @@ int main() {
     int n;
     std::cout << "How many cars do you want to enter? ";
     std::cin >> n;
-    string* brands = new string[n];
-    string* models = new string[n];
+
+    std::string* brands = new std::string[n];
+    std::string* models = new std::string[n];
     int* years = new int[n];
     float* prices = new float[n];
+
     for (int i = 0; i < n; i++) {
         inputCar(brands, models, years, prices, i);
+    }
+
     for (int i = 0; i < n; i++) {
         displayCar(brands, models, years, prices, i);
     }
+
     float averagePrice;
     calculateAveragePrice(prices, n, averagePrice);
-    std::cout << "\nAverage price of all cars: " << averagePrice;
+    std::cout << "\nAverage price of all cars: " << averagePrice << "\n";
+
     int mostExpensiveIndex = findMostExpensiveCar(prices, n);
     std::cout << "\nMost expensive car:\n";
     displayCar(brands, models, years, prices, mostExpensiveIndex);
-    string brandSearch;
+
+    std::string brandSearch;
     std::cout << "\nEnter brand name to search: ";
-    std::cin >> brandSearh;
+    std::cin >> brandSearch;
+
+    int foundIndex = searchCarByBrand(brands, n, brandSearch);
+    if (foundIndex > -1) {
+        std::cout << "Car found:\n";
+        displayCar(brands, models, years, prices, foundIndex);
+    } else {
+        std::cout << "Brand not found.\n";
+    }
+
     delete[] brands;
     delete[] models;
     delete[] years;
